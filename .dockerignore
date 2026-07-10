@@ -1,0 +1,19 @@
+# Archivos compilados por Visual Studio
+bin/
+obj/
+
+# Configuración local de Visual Studio
+.vs/
+
+# Configuración de Git
+.git/
+.gitignore
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.user
+*.suo

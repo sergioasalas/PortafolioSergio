@@ -1,0 +1,39 @@
+# ============================================================
+# ETAPA 1: Compilar y publicar el proyecto ASP.NET Core
+# ============================================================
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+
+# Carpeta de trabajo dentro del contenedor
+WORKDIR /src
+
+# Copiamos todos los archivos del proyecto
+COPY . .
+
+# Restauramos las dependencias NuGet
+RUN dotnet restore "PortafolioSergio.csproj"
+
+# Compilamos y publicamos la aplicación en modo producción
+RUN dotnet publish "PortafolioSergio.csproj" \
+    --configuration Release \
+    --output /app/publish \
+    /p:UseAppHost=false
+
+
+# ============================================================
+# ETAPA 2: Crear la imagen final para ejecutar el portafolio
+# ============================================================
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+
+WORKDIR /app
+
+# Copiamos solamente los archivos ya publicados
+COPY --from=build /app/publish .
+
+# Render espera que la aplicación escuche en el puerto 10000
+ENV ASPNETCORE_URLS=http://0.0.0.0:10000
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+EXPOSE 10000
+
+# Ejecutamos la aplicación
+ENTRYPOINT ["dotnet", "PortafolioSergio.dll"]
