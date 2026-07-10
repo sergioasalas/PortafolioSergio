@@ -1,0 +1,258 @@
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Desarrollador Full Stack .NET";
+}
+
+<section class="hero section" id="inicio">
+    <div class="container hero-grid">
+        <div class="hero-content reveal">
+            <span class="eyebrow">Disponible para nuevas oportunidades</span>
+            <h1>
+                Desarrollo soluciones web
+                <span>modernas y funcionales.</span>
+            </h1>
+
+            <p class="hero-text">
+                Soy Sergio Salas, desarrollador de software enfocado en C#, ASP.NET Core,
+                SQL Server y experiencias web claras. Transformo necesidades reales en
+                aplicaciones mantenibles, seguras y fáciles de usar.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#proyectos">
+                    Ver proyectos
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+
+                <a class="btn btn-secondary" href="/files/Hoja-de-Vida-Sergio-Salas.pdf" download>
+                    Descargar CV
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/sergioasalas" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </a>
+                <a href="mailto:sergioandresalas03@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    Correo
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal">
+            <div class="code-window">
+                <div class="window-bar">
+                    <span></span><span></span><span></span>
+                </div>
+                <pre><code><span class="code-blue">public class</span> <span class="code-gold">Developer</span>
+{
+    <span class="code-blue">public string</span> Name { get; } =
+        <span class="code-green">"Sergio Salas"</span>;
+
+    <span class="code-blue">public string[]</span> Stack { get; } =
+    [
+        <span class="code-green">"C#"</span>,
+        <span class="code-green">"ASP.NET Core"</span>,
+        <span class="code-green">"SQL Server"</span>
+    ];
+
+    <span class="code-blue">public void</span> Build()
+        => SolveRealProblems();
+}</code></pre>
+            </div>
+
+            <div class="floating-card card-one">
+                <i class="fa-solid fa-code"></i>
+                <span>Full Stack .NET</span>
+            </div>
+
+            <div class="floating-card card-two">
+                <i class="fa-solid fa-database"></i>
+                <span>SQL Server</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats section-small">
+    <div class="container stats-grid">
+        <article>
+            <strong>5+</strong>
+            <span>Proyectos desarrollados</span>
+        </article>
+        <article>
+            <strong>2026</strong>
+            <span>Experiencia con cliente real</span>
+        </article>
+        <article>
+            <strong>.NET</strong>
+            <span>Stack principal</span>
+        </article>
+        <article>
+            <strong>100%</strong>
+            <span>Aprendizaje continuo</span>
+        </article>
+    </div>
+</section>
+
+<section class="section" id="experiencia">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow">Trayectoria</span>
+            <h2>Experiencia y formación</h2>
+            <p>Una ruta construida con proyectos académicos, práctica profesional y soluciones para necesidades reales.</p>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-item reveal">
+                <span class="timeline-date">2026 · Actualidad</span>
+                <div>
+                    <h3>Sistema web para la gestión de un salón de belleza</h3>
+                    <p>
+                        Desarrollo Full Stack para un cliente, con módulos de servicios, usuarios,
+                        citas y administración. La identidad comercial se mantiene confidencial.
+                    </p>
+                    <div class="tags">
+                        <span>ASP.NET Core MVC</span><span>EF Core</span><span>SQL Server</span><span>Identity</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="timeline-item reveal">
+                <span class="timeline-date">2025</span>
+                <div>
+                    <h3>Perfumteq · Práctica profesional SENA</h3>
+                    <p>
+                        Desarrollo de una plataforma de comercio electrónico con autenticación,
+                        carrito, pedidos, administración e integración de pagos.
+                    </p>
+                    <div class="tags">
+                        <span>C#</span><span>ASP.NET Core</span><span>PayU</span><span>PayPal</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="timeline-item reveal">
+                <span class="timeline-date">2022 · 2025</span>
+                <div>
+                    <h3>Tecnólogo en Análisis y Desarrollo de Software</h3>
+                    <p>
+                        Formación en el SENA con proyectos web, bases de datos, documentación,
+                        programación orientada a objetos y mini videojuegos académicos.
+                    </p>
+                </div>
+            </article>
+
+            <article class="timeline-item reveal">
+                <span class="timeline-date">En curso</span>
+                <div>
+                    <h3>Ingeniería de Software</h3>
+                    <p>Fundación Universitaria Compensar.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section projects-section" id="proyectos">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow">Trabajo seleccionado</span>
+            <h2>Proyectos destacados</h2>
+            <p>Proyectos que muestran mi evolución técnica y mi capacidad para convertir ideas en soluciones.</p>
+        </div>
+
+        <div class="projects-grid">
+            @foreach (var project in Model.Projects)
+            {
+                <article class="project-card reveal">
+                    <div class="project-image">
+                        <img src="@project.ImageUrl" alt="Vista representativa de @project.Title" loading="lazy" />
+                        @if (!string.IsNullOrWhiteSpace(project.Status))
+                        {
+                            <span class="project-status">@project.Status</span>
+                        }
+                    </div>
+
+                    <div class="project-body">
+                        <h3>@project.Title</h3>
+                        <p>@project.Description</p>
+
+                        <div class="tags">
+                            @foreach (var technology in project.Technologies)
+                            {
+                                <span>@technology</span>
+                            }
+                        </div>
+
+                        <div class="project-links">
+                            @if (!string.IsNullOrWhiteSpace(project.RepositoryUrl))
+                            {
+                                <a href="@project.RepositoryUrl" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-github"></i>
+                                    Código
+                                </a>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(project.DemoUrl))
+                            {
+                                <a href="@project.DemoUrl" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    Demo
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tecnologias">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="eyebrow">Herramientas</span>
+            <h2>Tecnologías principales</h2>
+            <p>El conjunto de herramientas que utilizo para desarrollar aplicaciones web completas.</p>
+        </div>
+
+        <div class="tech-grid">
+            @foreach (var technology in Model.Technologies)
+            {
+                <div class="tech-card reveal">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>@technology</span>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section contact-section" id="contacto">
+    <div class="container contact-card reveal">
+        <div>
+            <span class="eyebrow">Hablemos</span>
+            <h2>¿Tienes una oportunidad o un proyecto?</h2>
+            <p>
+                Estoy interesado en oportunidades como desarrollador .NET Junior
+                y en proyectos donde pueda aportar, aprender y crecer profesionalmente.
+            </p>
+        </div>
+
+        <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:sergioandresalas03@gmail.com">
+                Enviar correo
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+            <a class="btn btn-secondary" href="https://github.com/sergioasalas" target="_blank" rel="noopener noreferrer">
+                Ver GitHub
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </div>
+</section>

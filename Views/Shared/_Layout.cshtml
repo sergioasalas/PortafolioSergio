@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portafolio de Sergio Salas, desarrollador de software especializado en .NET y aplicaciones web." />
+    <meta name="theme-color" content="#08111f" />
+
+    <title>@ViewData["Title"] - Sergio Salas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar container">
+            <a class="brand" href="#inicio" aria-label="Ir al inicio">
+                SS<span>.</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#inicio">Inicio</a>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#tecnologias">Tecnologías</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>Sergio Salas</strong>
+                <p>Desarrollador de Software · Bogotá, Colombia</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="mailto:sergioandresalas03@gmail.com">Correo</a>
+                <a href="https://github.com/sergioasalas" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="/files/Hoja-de-Vida-Sergio-Salas.pdf" target="_blank">Hoja de vida</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
